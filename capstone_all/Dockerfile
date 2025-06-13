@@ -1,18 +1,21 @@
-# Gunakan base image Python
-FROM python:3.11-slim
+FROM python:3.10-slim
 
 # Set working directory
 WORKDIR /app
 
-# Copy semua isi project ke dalam container
-COPY . /app
+# Copy project files
+COPY . .
 
-# Install dependencies
+# Install system dependencies (opsional, jika diperlukan untuk tensorflow atau ydf)
+RUN apt-get update && apt-get install -y \
+    curl \
+    git \
+    build-essential \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Python dependencies
 RUN pip install --upgrade pip
 RUN pip install -r capstone_proyek/requirements.txt
 
-# Expose port
-EXPOSE 8000
-
-# Jalankan API
-CMD ["uvicorn", "capstone_proyek.main:app", "--host", "0.0.0.0", "--port", "8000"]
+# Jalankan aplikasi
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
