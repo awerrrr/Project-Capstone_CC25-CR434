@@ -1,6 +1,6 @@
-fastapi==0.115.2
+fastapi==0.110.0
+pandas==2.2.2
+pydantic==1.10.14
 uvicorn==0.29.0
-pandas==2.3.0
-pydantic==2.11.1
-tensorflow_decision_forests==1.9.0
+tensorflow_decision_forests==1.7.0
 ydf==0.12.0
