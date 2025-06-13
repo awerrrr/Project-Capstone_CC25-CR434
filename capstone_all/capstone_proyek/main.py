@@ -3,12 +3,13 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import pandas as pd
 import tensorflow_decision_forests as tfdf
-
-# Load model TFDF
-model = tfdf.keras.models.load_model("/Applications/XAMPP/htdocs/capstone_all/capstone_proyek/tfdf_model_laptop")
+import ydf  # successor of TFDF
 
 # Inisialisasi FastAPI
 app = FastAPI(title="Laptop Price Prediction API")
+
+# Load model TFDF
+model = ydf.from_tensorflow_decision_forests("/Applications/XAMPP/htdocs/capstone_all/capstone_proyek/tfdf_model_laptop")
 
 # Tambahkan CORS agar bisa diakses dari HTML/JS
 app.add_middleware(
