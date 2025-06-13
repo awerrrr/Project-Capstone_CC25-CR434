@@ -1,0 +1,156 @@
+@import url("https://fonts.googleapis.com/css2?family=Signika:wght@400;500;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Signika", sans-serif;
+  background-color: #fff;
+}
+
+.content {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.content-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+
+  position: relative;
+  height: 100%;
+  width: 100%;
+  left: 10%;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin-bottom: 30px;
+}
+
+.header-title {
+  color: #309BEC;
+  font-weight: 800;
+  font-size: 38px;
+}
+
+.login-heading {
+  font-weight: 700;
+  font-size: 42px;
+}
+
+.select-method {
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+
+.login-method {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  width: 50%;
+}
+
+.google-verification-btn {
+  background-color: #fff;
+  font-size: 22px;
+  padding: 10px 15%;
+  border: 1px solid #999;
+  border-radius: 11px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.5s;
+}
+
+.google-verification-btn:hover,
+.google-verification-btn:active {
+  background-color: rgba(153, 153, 153, 0.2);
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.username-input,
+.password-input {
+  width: 300px;
+  padding: 10px;
+  margin: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  opacity: 0.7;
+  background-color: #e7efff;
+}
+
+.login-button {
+  color: #fff;
+  background-color: #309BEC;
+  width: 300px;
+  padding: 10px 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 11px;
+  transition: all 0.5s;
+}
+
+.login-button:hover,
+.login-button:active {
+  background-color: #0067B5
+}
+
+.sign-up {
+  text-align: right;
+  margin-top: -5px;
+}
+
+a {
+  color: #bbb;
+}
+
+.sign-up a:link,
+.sing-up a:visited {
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.sign-up a:hover,
+.sign-up a:active {
+  color: #333;
+}
+
+.content-right {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #309BEC;
+}
+
+.web-title {
+  font-weight: 900;
+  font-size: 65px;
+  color: #fff;
+}

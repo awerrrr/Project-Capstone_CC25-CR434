@@ -1,0 +1,49 @@
+@import url("https://fonts.googleapis.com/css2?family=Signika:wght@400;500;700&display=swap");
+
+
+#sideMenu a {
+  color: #309BEC; 
+}
+
+#sideMenu a:hover {
+  color: #0067B5; 
+}
+
+#sideMenu button {
+  color: #309BEC; 
+}
+
+body {
+  font-family: "Signika", sans-serif;
+  background-color: #fff;
+}
+
+.sideMenu{
+    color: aqua;
+}
+
+.side-menu {
+ color: aqua;
+  font-weight:5;
+  font-size: 18px;
+}
+
+.input-group .form-control {
+  color: #309BEC;                /* warna teks input */
+  border: 1px solid #309BEC;     /* warna border input */
+}
+
+.input-group .form-control::placeholder {
+  color: #309BEC;                /* warna placeholder */
+  opacity: 1;                    /* agar placeholder tidak transparan */
+}
+
+.input-group .btn-outline-primary {
+  color: #309BEC;                /* warna teks tombol */
+  border-color: #309BEC;         /* warna border tombol */
+}
+
+.input-group .btn-outline-primary:hover {
+  background-color: #309BEC;     /* latar belakang saat hover */
+  color: #fff;                   /* teks jadi putih saat hover */
+}

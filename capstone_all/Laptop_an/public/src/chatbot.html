@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Homepage Laptopan</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Signika:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="../css/chatbot.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
+ 
+  <style>
+  </style>
+</head>
+<body>
+  <div class="chat-container">
+    <div class="chat-header">Chatbot Rekomendasi Laptop</div>
+    <div class="chat-body">
+      <div class="chat-message bot-message">
+        <img src="../assets/icon/bot.png" class="bot-icon" alt="Bot">
+        <div class="message-bubble"><strong>Bot:</strong> Halo! Saya LaptopBot. Bagaimana saya membantu Anda hari ini?</div>
+      </div>
+      <div class="chat-message user-message">
+        <img src="../assets/icon/account.png" class="user-icon" alt="User">
+        <div class="message-bubble">Carikan saya laptop seharga 10.000.000</div>
+      </div>
+    </div>
+    <div class="chat-footer">
+      <input type="text" id="userInput" placeholder="Ketik Pesan Anda...">
+      <button id="sendBtn"><img src="../assets/icon/send.png" alt="Kirim"></button>
+    </div>    
+  </div>
+  <script>
+    const inputBox = document.getElementById('userInput');
+    const sendBtn = document.getElementById('sendBtn');
+    const chatBody = document.querySelector('.chat-body');
+    
+    sendBtn.addEventListener('click', async () => {
+      const message = inputBox.value.trim();
+      if (!message) return;
+    
+      // Tampilkan pesan user
+      chatBody.innerHTML += `
+        <div class="chat-message user-message">
+          <img src="../assets/icon/account.png" class="user-icon" alt="User">
+          <div class="message-bubble">${message}</div>
+        </div>
+      `;
+    
+      // Format input harus: "Ram=8, Weight=1.5, SSD=256, TypeName_enc=2, OpSys_enc=1"
+      const parts = message.split(',');
+      const data = {};
+      for (let part of parts) {
+        const [key, value] = part.split('=').map(s => s.trim());
+        if (key && value !== undefined) {
+          data[key] = isNaN(value) ? value : parseFloat(value);
+        }
+      }
+    
+      try {
+      const response = await fetch('http://127.0.0.1:8000/predict', {
+        method: 'POST',  // ← INI WAJIB ADA
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+
+    
+        const result = await response.json();
+        const predictedPrice = result.predicted_price_idr;
+    
+        chatBody.innerHTML += `
+          <div class="chat-message bot-message">
+            <img src="../assets/icon/bot.png" class="bot-icon" alt="Bot">
+            <div class="message-bubble">
+              Perkiraan harga laptop berdasarkan spesifikasi kamu: <strong>Rp ${predictedPrice.toLocaleString('id-ID')}</strong>
+            </div>
+          </div>
+        `;
+      } catch (error) {
+        chatBody.innerHTML += `
+          <div class="chat-message bot-message">
+            <img src="../assets/icon/bot.png" class="bot-icon" alt="Bot">
+            <div class="message-bubble">Maaf, gagal menghubungi server prediksi 😓</div>
+          </div>
+        `;
+        console.error(error);
+      }
+    
+      inputBox.value = '';
+      chatBody.scrollTop = chatBody.scrollHeight;
+    });
+    </script>    
+</body>
+</html>
