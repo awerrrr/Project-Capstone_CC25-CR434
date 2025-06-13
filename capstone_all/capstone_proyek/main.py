@@ -39,7 +39,6 @@ def predict_price(specs: LaptopSpecs):
 
     return {"predicted_price_idr": float(round(prediction, 2))}
 
-# Health check
-@app.get("/health")
-def health_check():
-    return {"status": "ok"}
+@app.get("/")
+def read_root():
+    return {"message": "Selamat datang di API Capstone!"}
