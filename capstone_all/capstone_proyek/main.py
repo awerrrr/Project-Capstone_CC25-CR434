@@ -9,7 +9,7 @@ import ydf  # successor of TFDF
 app = FastAPI(title="Laptop Price Prediction API")
 
 # Load model TFDF
-model = ydf.from_tensorflow_decision_forests("/Applications/XAMPP/htdocs/capstone_all/capstone_proyek/tfdf_model_laptop")
+model = ydf.from_tensorflow_decision_forests("tfdf_model_laptop")
 
 # Tambahkan CORS agar bisa diakses dari HTML/JS
 app.add_middleware(
